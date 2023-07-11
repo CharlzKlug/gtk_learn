@@ -1,5 +1,4 @@
 #include <gtk/gtk.h>
-/* #include <glib.h> */
 
 #define SLICE_SIZE 10
 
