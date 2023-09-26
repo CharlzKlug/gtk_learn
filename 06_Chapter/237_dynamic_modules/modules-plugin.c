@@ -11,3 +11,7 @@ G_MODULE_EXPORT gboolean print_another_one (gpointer data) {
   g_printf ("%s\n", (gchar*) data);
   return TRUE;
 }
+
+G_MODULE_EXPORT gint some_func (gint a, gint b) {
+  return 42 + a + b;
+}
