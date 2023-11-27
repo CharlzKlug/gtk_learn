@@ -2,3 +2,4 @@
 *.so
 program
 *.out
+*#
