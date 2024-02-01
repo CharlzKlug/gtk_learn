@@ -48,13 +48,15 @@ int main(int argc, char *argv[]) {
   underline= gtk_button_new_with_label("Underline");
   strike= gtk_button_new_with_label("Strikethrough");
   clear= gtk_button_new_with_label("Clear");
-  scale= gtk_combo_box_new();
+  /* scale= gtk_combo_box_new(); */
+  scale= gtk_combo_box_text_new();
 
   /* Add choices to the GtkComboBox widget. */
   for (i= 0; text_scales[i].str != NULL; i++) {
-    gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(scale), text_scales[i].str);
-    gtk_text_buffer_create_tag(buffer, text_scales[i].str, "scales",
-			       text_scales[i].scale, NULL);
+    gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(scale), "1");
+    /* gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(scale), text_scales[i].str); */
+    /* gtk_text_buffer_create_tag(buffer, text_scales[i].str, "scales", */
+    /* 			       text_scales[i].scale, NULL); */
   }
 
   /* Add the name of the text tag as a data parameter of the object. */
@@ -64,18 +66,18 @@ int main(int argc, char *argv[]) {
   g_object_set_data(G_OBJECT(strike), "tag", "strike");
 
   /* Connect each of the buttons and the combo box to the necessary signals. */
-  g_signal_connect(G_OBJECT(bold), "clicked",
-		   G_CALLBACK(format), (gpointer) textview);
-  g_signal_connect(G_OBJECT(italic), "clicked",
-		   G_CALLBACK(format), (gpointer) textview);
-  g_signal_connect(G_OBJECT(underline), "clicked",
-		   G_CALLBACK(format), (gpointer) textview);
-  g_signal_connect(G_OBJECT(strike), "clicked",
-		   G_CALLBACK(format), (gpointer) textview);
-  g_signal_connect(G_OBJECT(scale), "changed",
-		   G_CALLBACK(scale_changed), (gpointer) textview);
-  g_signal_connect(G_OBJECT(clear), "clicked",
-		   G_CALLBACK(clear_clicked), (gpointer) textview);
+  /* g_signal_connect(G_OBJECT(bold), "clicked", */
+  /* 		   G_CALLBACK(format), (gpointer) textview); */
+  /* g_signal_connect(G_OBJECT(italic), "clicked", */
+  /* 		   G_CALLBACK(format), (gpointer) textview); */
+  /* g_signal_connect(G_OBJECT(underline), "clicked", */
+  /* 		   G_CALLBACK(format), (gpointer) textview); */
+  /* g_signal_connect(G_OBJECT(strike), "clicked", */
+  /* 		   G_CALLBACK(format), (gpointer) textview); */
+  /* g_signal_connect(G_OBJECT(scale), "changed", */
+  /* 		   G_CALLBACK(scale_changed), (gpointer) textview); */
+  /* g_signal_connect(G_OBJECT(clear), "clicked", */
+  /* 		   G_CALLBACK(clear_clicked), (gpointer) textview); */
 
   
   return 0;
@@ -105,3 +107,6 @@ static void scale_changed(GtkComboBox *combo, GtkTextView *textview) {
   /* format(GTK_WIDGET(combo), textview); */
   /* gtk_combo_box_set_active(combo, -1); */
 }
+
+/* Remove all of the tags from the selected text. */
+static void clear_clicked(GtkButton *button, GtkTextView *textview) {}
